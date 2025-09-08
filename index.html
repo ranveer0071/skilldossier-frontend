@@ -26,6 +26,9 @@
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
+        <button class="menu-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu" title="Menu">
+          &#9776;
+        </button>
         <nav class="nav" aria-label="Primary">
           <ul id="primary-navigation" class="nav-list">
             <li><a href="#home">Home</a></li>
@@ -147,6 +150,16 @@
         </div>
       </section>
 
+      <!-- Quotes (from DummyJSON) -->
+      <section id="quotes-section" class="section alt" aria-label="Quotes">
+        <div class="container">
+          <h2 class="section-title">Quotes</h2>
+          <div id="quotes" class="cards" aria-live="polite">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </section>
+
       <!-- Features -->
       <section id="features" class="section alt" aria-label="Features">
         <div class="container">
@@ -235,7 +248,8 @@
       </div>
     </div>
 
-    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="main.js" defer></script>
   </body>
   </html>

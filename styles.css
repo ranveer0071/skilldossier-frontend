@@ -67,6 +67,7 @@ body{
 .nav .btn{margin-left:12px}
 .nav-toggle{display:none;background:none;border:0;cursor:pointer}
 .nav-toggle .bar{display:block;width:24px;height:2px;background:#111;margin:5px 0;border-radius:2px}
+.menu-toggle{display:none;background:none;border:0;font-size:26px;line-height:1;color:var(--text);cursor:pointer;padding:8px;border-radius:8px}
 .dark .nav-toggle .bar{background:#e5e7eb}
 
 @media (max-width: 900px){
@@ -77,6 +78,25 @@ body{
   .nav-list li{border-top:1px solid rgba(0,0,0,.06)}
   .nav-list a{padding:16px 20px}
 }
+/* Tablet and below: hamburger menu */
+
+
+/* Between tablet and small desktop: allow horizontal scroll of links instead of wrap */
+
+
+/* Show logo and dark mode only on non-desktop (<=1024px) */
+@media (max-width: 1024px){
+  .logo{display:flex !important}
+  .menu-toggle,.nav-toggle{display:none !important}
+  .nav-list{display:none !important}
+  .nav-inner{justify-content:space-between !important}
+  /* Keep nav visible only for theme toggle */
+  .nav{position:static;transform:none;inset:auto;background:transparent;border:0;overflow:visible}
+  #theme-toggle{display:inline-flex !important}
+}
+
+
+
 
 /* Hero */
 .hero{position:relative;min-height:90vh;display:flex;align-items:center;color:#fff;background:
@@ -115,6 +135,8 @@ body{
 @media (max-width: 640px){
   .cards{grid-template-columns:1fr}
 }
+
+
 
 /* Accordion details for objectives */
 .accordion{border-top:1px solid #eef0f4;margin-top:14px;padding-top:12px;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease, opacity .3s ease}
@@ -198,4 +220,155 @@ body{
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+
+/* ==========================================
+   Responsive Enhancements (non-destructive)
+   ========================================== */
+
+/* Media: make media elements fluid */
+img, video, iframe{max-width:100%;height:auto}
+
+/* Container padding tweaks on small screens */
+@media (max-width: 768px){
+  .container{padding:0 16px}
+}
+@media (max-width: 420px){
+  .container{padding:0 12px}
+}
+
+/* Section vertical rhythm */
+@media (max-width: 1024px){
+  .section{padding:72px 0}
+}
+@media (max-width: 768px){
+  .section{padding:56px 0}
+}
+@media (max-width: 420px){
+  .section{padding:44px 0}
+}
+
+/* Typography scaling */
+@media (min-width: 1440px){
+  .section-title{font-size:2.1rem}
+}
+@media (max-width: 1024px){
+  .section-title{font-size:1.8rem}
+}
+@media (max-width: 640px){
+  .section-title{font-size:1.6rem}
+}
+
+/* Hero size adjustments */
+@media (max-width: 768px){
+  .hero{min-height:84vh}
+}
+@media (max-width: 420px){
+  .hero{min-height:78vh}
+}
+
+/* Navbar refinements */
+@media (max-width: 768px){
+  .nav-list a{font-size:.95rem}
+}
+@media (max-width: 420px){
+  .nav-inner{height:56px}
+}
+
+/* Grid gaps reduce slightly on smaller screens */
+@media (max-width: 1024px){
+  .cards{gap:20px}
+}
+@media (max-width: 640px){
+  .cards{gap:16px}
+}
+
+/* Timeline scroll hint (extra padding) */
+@media (max-width: 640px){
+  .timeline{padding:6px 2px}
+}
+
+/* Carousel controls tighter on phones */
+@media (max-width: 420px){
+  .carousel-control.prev{left:2px}
+  .carousel-control.next{right:2px}
+}
+
+/* Contact form spacing */
+@media (max-width: 640px){
+  .contact-form{padding:16px}
+}
+
+/* Auth card max width on tablets/phones */
+@media (max-width: 768px){
+  .auth-card{max-width:520px}
+}
+@media (max-width: 420px){
+  .auth-card{max-width:100%}
+}
+
+/* Quotes cards grid responsiveness (inherits generic .cards rules) */
+@media (max-width: 960px){
+  #quotes.cards{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 640px){
+  #quotes.cards{grid-template-columns:1fr}
+}
+
+/* Ensure no accidental horizontal overflow on tiny devices */
+@media (max-width: 360px){
+  body{overflow-x:hidden}
+}
+/* =========================
+   Mobile/Tablet Header Only
+========================= */
+@media (max-width: 768px) {
+  /* Hide nav links */
+  .nav-list {
+    display: none !important;
+  }
+
+  /* Logo + dark mode button evenly spaced */
+  .nav-inner {
+    justify-content: space-between !important; /* spread items */
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    height: auto !important;
+    gap: 0;
+  }
+
+  /* Ensure logo alignment */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Adjust dark mode button */
+  .nav .btn {
+    margin-left: 0 !important;
+    padding: 6px 10px !important;
+    flex-shrink: 0;
+  }
+
+  /* Hide hamburger if present */
+  .menu-toggle,
+  .nav-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-inner {
+    padding: 0 12px !important;
+  }
+
+  .logo span {
+    font-size: 1rem;
+  }
+
+  .nav .btn {
+    padding: 5px 8px !important;
+    font-size: 0.9rem;
+  }
+}
 

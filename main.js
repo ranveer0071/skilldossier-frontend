@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   animateCounters();
   setupGSAPAnimations();
-  loadApiTestimonials();
+  loadDummyQuotes();
 });
 
 // Navbar mobile toggle
@@ -45,11 +45,19 @@ function setupNav(){
   const nav = document.querySelector('.nav');
   const list = document.getElementById('primary-navigation');
   const themeBtn = document.getElementById('theme-toggle');
+  const menuToggle = document.querySelector('.menu-toggle');
   if(!toggle || !nav || !list) return;
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
   });
+  // hamburger for <=768px
+  if(menuToggle){
+    menuToggle.addEventListener('click', ()=>{
+      const open = nav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+  }
   // close on link click (mobile)
   list.addEventListener('click', (e)=>{
     if(e.target.matches('a')){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
@@ -315,43 +323,46 @@ function toggleTheme(){
 // GSAP animations
 function setupGSAPAnimations(){
   if(typeof gsap === 'undefined') return;
+  if(typeof ScrollTrigger !== 'undefined'){
+    // Ensure plugin is registered before any scrollTrigger usage
+    gsap.registerPlugin(ScrollTrigger);
+  }
   gsap.from('.hero-title', { y: 20, opacity: 0, duration: .8, ease: 'power2.out' });
   gsap.from('.hero-subtitle', { y: 20, opacity: 0, duration: .8, ease: 'power2.out', delay: .1 });
   gsap.from('.btn-accent', { scale: .95, opacity: 0, duration: .6, ease: 'power2.out', delay: .2 });
   gsap.utils.toArray('.timeline-item').forEach((el, i)=>{
-    gsap.from(el, { x: 40, opacity: 0, duration: .6, ease: 'power2.out', delay: i * .05, scrollTrigger: { trigger: el, start: 'top 85%' } });
+    gsap.from(el, { x: 40, opacity: 0, duration: .6, ease: 'power2.out', delay: i * .05, scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 30%', scrub: false } });
   });
   gsap.utils.toArray('.card').forEach((el)=>{
-    gsap.from(el, { y: 16, opacity: 0, duration: .6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+    gsap.from(el, { y: 16, opacity: 0, duration: .6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 30%', scrub: false } });
   });
 }
 
-// API testimonials with fallback
-async function loadApiTestimonials(){
-  const track = document.getElementById('testimonial-track');
-  if(!track) return;
+// Quotes via DummyJSON with fallback
+async function loadDummyQuotes(){
+  const container = document.getElementById('quotes');
+  if(!container) return;
+  const fallback = [
+    { quote: 'Learning never exhausts the mind.', author: 'Leonardo da Vinci' },
+    { quote: 'Education is the passport to the future.', author: 'Malcolm X' },
+    { quote: 'An investment in knowledge pays the best interest.', author: 'Benjamin Franklin' }
+  ];
   try{
-    // Using Quotable API for quotes
-    const res = await fetch('https://api.quotable.io/quotes?limit=3');
+    const res = await fetch('https://dummyjson.com/quotes?limit=3');
     if(!res.ok) throw new Error('Bad response');
     const data = await res.json();
-    const items = (data.results || []).slice(0,3).map((q)=>({ text: `“${q.content}”`, author: q.author }));
-    if(items.length){
-      track.innerHTML = items.map(q=>`
-        <article class="testimonial">
-          <p>${q.text}</p>
-          <div class="author">
-            <img src="assets/avatar1.svg" alt="Avatar" />
-            <span>${q.author}</span>
-          </div>
-        </article>`).join('');
-      // reset carousel index
-      carouselIndex = 0;
-      // trigger a layout so CSS transition works immediately
-      void track.offsetWidth;
-    }
+    const items = (data.quotes || []).slice(0,3).map(q=>({ quote: q.quote, author: q.author }));
+    renderQuotes(container, items.length ? items : fallback);
   } catch(e){
-    // fallback: keep existing static testimonials
+    renderQuotes(container, fallback);
   }
+}
+function renderQuotes(container, items){
+  container.innerHTML = items.map(q=>`
+    <article class="card" role="listitem">
+      <h3 style="margin:0 0 8px">“${q.quote}”</h3>
+      <p style="margin:0;color:var(--muted)">— ${q.author}</p>
+    </article>
+  `).join('');
 }
 

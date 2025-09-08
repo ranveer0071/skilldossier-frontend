@@ -5,6 +5,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   const form = document.getElementById('login-form');
   if(!form) return;
+  const guest = document.getElementById('guest-login');
+  if(guest){
+    guest.addEventListener('click', ()=>{
+      localStorage.setItem('guest', 'true');
+      window.location.href = 'index.html#objectives';
+    });
+  }
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
     const email = document.getElementById('login-email').value.trim();
