@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Online Course Dossier</title>
+    <meta name="description" content="A complete, interactive course overview." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Navbar -->
+    <header class="navbar" role="banner">
+      <div class="container nav-inner">
+        <a href="#home" class="logo" aria-label="Online Course Dossier Home">
+          <img src="assets/logo.svg" alt="Logo" width="36" height="36" />
+          <span>Course Dossier</span>
+        </a>
+        <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav class="nav" aria-label="Primary">
+          <ul id="primary-navigation" class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#objectives">Objectives</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#faculty">Faculty</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#students">Students</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#attachments">Attachments</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button id="theme-toggle" class="btn btn-primary" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle theme (Light/Dark)">Dark</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section id="home" class="section hero" aria-label="Hero">
+        <div class="container hero-content">
+          <h1 class="hero-title">Online Course Dossier</h1>
+          <p class="hero-subtitle">A complete, interactive course overview.</p>
+          <a class="btn btn-accent" href="login.html">Start</a>
+          <div class="hero-wave" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- Objectives -->
+      <section id="objectives" class="section" aria-label="Objectives">
+        <div class="container">
+          <h2 class="section-title">Objectives</h2>
+          <div class="cards" role="list" aria-live="polite" id="objectives-list">
+            <!-- populated by JS from data -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Program -->
+      <section id="program" class="section alt" aria-label="Program">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Program</h2>
+            <a class="btn btn-accent" href="#" id="download-syllabus" download>Download syllabus</a>
+          </div>
+          <div class="timeline" id="program-timeline" role="list">
+            <!-- timeline items via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Faculty -->
+      <section id="faculty" class="section" aria-label="Faculty">
+        <div class="container">
+          <h2 class="section-title">Faculty</h2>
+          <div class="cards trio" id="faculty-cards" role="list">
+            <!-- cards via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule" class="section alt" aria-label="Schedule">
+        <div class="container">
+          <h2 class="section-title">Schedule</h2>
+          <div class="schedule-grid" id="schedule-grid" role="table" aria-label="Weekly schedule">
+            <!-- grid via JS -->
+          </div>
+          <div id="schedule-detail" class="schedule-detail" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- Students -->
+      <section id="students" class="section" aria-label="Students">
+        <div class="container">
+          <h2 class="section-title">Students</h2>
+          <div class="stats" aria-label="Course statistics">
+            <div class="stat">
+              <div class="stat-number" data-count="1200">0</div>
+              <div class="stat-label">Enrolled</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-count="48">0</div>
+              <div class="stat-label">Hours</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-count="4.8" data-decimals="1">0</div>
+              <div class="stat-label">Rating</div>
+            </div>
+          </div>
+
+          <div class="carousel" aria-roledescription="carousel" aria-label="Student testimonials">
+            <button class="carousel-control prev" aria-label="Previous testimonial" data-dir="-1">&#10094;</button>
+            <div class="carousel-track" id="testimonial-track" role="group" aria-live="polite">
+              <article class="testimonial">
+                <p>“Fantastic overview and engaging content.”</p>
+                <div class="author">
+                  <img src="assets/avatar1.svg" alt="Student avatar" />
+                  <span>Alex</span>
+                </div>
+              </article>
+              <article class="testimonial">
+                <p>“Loved the visuals and structure.”</p>
+                <div class="author">
+                  <img src="assets/avatar2.svg" alt="Student avatar" />
+                  <span>Sam</span>
+                </div>
+              </article>
+              <article class="testimonial">
+                <p>“Clear objectives and helpful resources.”</p>
+                <div class="author">
+                  <img src="assets/avatar3.svg" alt="Student avatar" />
+                  <span>Riley</span>
+                </div>
+              </article>
+            </div>
+            <button class="carousel-control next" aria-label="Next testimonial" data-dir="1">&#10095;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="section alt" aria-label="Features">
+        <div class="container">
+          <h2 class="section-title">Features</h2>
+          <div class="cards quartet">
+            <div class="card feature" role="listitem">
+              <img src="assets/icon-video.svg" alt="Videos" />
+              <h3>Videos</h3>
+              <p>Concise lectures and walkthroughs.</p>
+            </div>
+            <div class="card feature" role="listitem">
+              <img src="assets/icon-infographic.svg" alt="Infographics" />
+              <h3>Infographics</h3>
+              <p>Visual summaries and guides.</p>
+            </div>
+            <div class="card feature" role="listitem">
+              <img src="assets/icon-quiz.svg" alt="Quizzes" />
+              <h3>Quizzes</h3>
+              <p>Reinforce learning and retention.</p>
+            </div>
+            <div class="card feature" role="listitem">
+              <img src="assets/icon-embed.svg" alt="Embedded content" />
+              <h3>Embedded Content</h3>
+              <p>Interactive resources and tools.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Attachments -->
+      <section id="attachments" class="section" aria-label="Attachments">
+        <div class="container">
+          <h2 class="section-title">Attachments</h2>
+          <ul class="downloads">
+            <li><a href="assets/sample.pdf" download>Course Overview PDF</a></li>
+            <li><a href="assets/syllabus.pdf" download>Syllabus PDF</a></li>
+            <li><a href="assets/resources.zip" download>Resources ZIP</a></li>
+          </ul>
+          <div class="pdf-preview" role="img" aria-label="PDF preview placeholder">
+            <img src="assets/pdf-placeholder.svg" alt="PDF preview placeholder" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section alt" aria-label="Contact">
+        <div class="container">
+          <h2 id="contact-heading" class="section-title">Contact</h2>
+          <div class="contact-grid">
+            <div class="contact-info">
+              <p><strong>Email:</strong> <a href="mailto:info@example.com">info@example.com</a></p>
+              <p><strong>Phone:</strong> <a href="tel:+123456789">+1 234 567 89</a></p>
+              <p><strong>Website:</strong> <a href="https://example.com" target="_blank" rel="noopener">example.com</a></p>
+            </div>
+            <form id="contact-form" class="contact-form" novalidate aria-labelledby="contact-heading">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+                <span class="error" id="error-name" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+                <span class="error" id="error-email" role="alert"></span>
+              </div>
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <span class="error" id="error-message" role="alert"></span>
+              </div>
+              <button class="btn btn-primary" type="submit">Send</button>
+              <p class="form-success" id="form-success" role="status" aria-live="polite" hidden>Message sent! We'll get back to you soon.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Root -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close" data-close>&times;</button>
+        <h3 id="modal-title"></h3>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="main.js" defer></script>
+  </body>
+  </html>
+
+

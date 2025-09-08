@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login • Online Course Dossier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="navbar" role="banner">
+      <div class="container nav-inner">
+        <a href="index.html#home" class="logo" aria-label="Back to Home">
+          <img src="assets/logo.svg" alt="Logo" width="36" height="36" />
+          <span>Course Dossier</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <button id="theme-toggle" class="btn btn-primary" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle theme (Light/Dark)">Dark</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="container auth-container">
+        <div class="auth-card card">
+          <h1 class="section-title" style="margin-bottom:8px">Welcome back</h1>
+          <p style="margin-top:0;color:var(--muted)">Log in to access your course dossier</p>
+          <form id="login-form" class="contact-form" novalidate aria-labelledby="login-heading">
+            <h2 id="login-heading" style="position:absolute;left:-9999px">Login form</h2>
+            <div class="form-field">
+              <label for="login-email">Email</label>
+              <input id="login-email" name="email" type="email" required autocomplete="username" />
+              <span class="error" id="error-login-email" role="alert"></span>
+            </div>
+            <div class="form-field">
+              <label for="login-password">Password</label>
+              <input id="login-password" name="password" type="password" required autocomplete="current-password" />
+              <span class="error" id="error-login-password" role="alert"></span>
+            </div>
+            <button class="btn btn-accent" type="submit" style="width:100%">Sign in</button>
+            <p class="form-success" id="login-success" role="status" aria-live="polite" hidden>Logged in! Redirecting…</p>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="login.js" defer></script>
+  </body>
+  </html>
+
+

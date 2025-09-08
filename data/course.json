@@ -1,0 +1,26 @@
+{
+  "objectives": [
+    { "title": "Clarify Goals", "text": "Define learning outcomes." },
+    { "title": "Structured Plans", "text": "Weekly modules and tasks." },
+    { "title": "Active Learning", "text": "Engage with media and quizzes." }
+  ],
+  "program": [
+    { "time": "9:00", "title": "Introduction", "desc": "Welcome session.", "link": "https://example.com" },
+    { "time": "10:00", "title": "Module 1", "desc": "Foundations and setup." },
+    { "time": "11:00", "title": "Workshop", "desc": "Hands-on exercises." }
+  ],
+  "faculty": [
+    { "name": "Dr. Jane Smith", "role": "Professor", "bio": "Expert in e-learning", "photo": "assets/avatar1.svg", "email": "jane@example.com" },
+    { "name": "Prof. Mark Lee", "role": "Instructor", "bio": "Learning design specialist", "photo": "assets/avatar2.svg", "email": "mark@example.com" },
+    { "name": "Ava Patel", "role": "Assistant", "bio": "Multimedia facilitator", "photo": "assets/avatar3.svg", "email": "ava@example.com" }
+  ],
+  "schedule": {
+    "monday": [ { "time": "10:00", "topic": "Module 1" }, { "time": "13:00", "topic": "Workshop" } ],
+    "tuesday": [ { "time": "11:00", "topic": "Module 2" } ],
+    "wednesday": [ { "time": "14:00", "topic": "Q&A" } ],
+    "thursday": [ { "time": "10:00", "topic": "Guest Lecture" } ],
+    "friday": [ { "time": "12:00", "topic": "Review" } ]
+  }
+}
+
+
